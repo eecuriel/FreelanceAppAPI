@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using FreelanceAppAPI.Context;
 using FreelanceAppAPI.Models;
 using Microsoft.AspNetCore.Identity;
@@ -23,13 +24,25 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
 }
 ).AddEntityFrameworkStores<ApplicationDbContext>(); 
 
+builder.Services.AddCors(options => {
+
+    options.AddPolicy("CorsPolicy", 
+    builder => builder.WithOrigins("*")
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    );
+
+});
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI();   
 }
 
 app.UseHttpsRedirection();

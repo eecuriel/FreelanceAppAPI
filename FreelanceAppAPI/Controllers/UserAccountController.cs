@@ -21,11 +21,10 @@ namespace FreelanceAppAPI.Controllers
                 ApplicationDbContext context
                 )
         {
-             _userManager = userManager;
+            _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
             _context = context;
-
         }
 
         #region Post Methods
@@ -47,8 +46,21 @@ namespace FreelanceAppAPI.Controllers
             {
                 return BadRequest(result.Errors);
             }
- 
         }
+
+        #endregion
+
+        #region Get Methods
+
+        [HttpGet("UserList")]
+        public async Task<ActionResult> GetUserList() {
+
+            //var userList = _context.Users.ToList();
+            var userList = _context.Users.ToList();
+    
+        return Ok(userList);
+        }
+
 
         #endregion
 
