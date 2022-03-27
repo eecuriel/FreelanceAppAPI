@@ -14,7 +14,6 @@ namespace FreelanceAppAPI.Controllers
         private readonly IConfiguration _configuration;
         private readonly ApplicationDbContext _context;
 
-
         public UserAccountController(
                 UserManager<ApplicationUser> userManager,
                 SignInManager<ApplicationUser> signInManager,
@@ -48,10 +47,8 @@ namespace FreelanceAppAPI.Controllers
             {
                 return BadRequest(result.Errors);
             }
-
-            
+ 
         }
-
 
         #endregion
 
