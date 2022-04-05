@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\FreelanceAppAPI.csproj": {}
+    "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\FreelanceAppAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\FreelanceAppAPI.csproj": {
+    "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\FreelanceAppAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\FreelanceAppAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\FreelanceAppAPI.csproj",
         "projectName": "FreelanceAppAPI",
-        "projectPath": "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\FreelanceAppAPI.csproj",
+        "projectPath": "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\FreelanceAppAPI.csproj",
         "packagesPath": "C:\\Users\\Eduardo Curiel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\obj\\",
+        "outputPath": "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -61,6 +61,10 @@
               "version": "[6.0.3, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[6.0.3, )"
             },

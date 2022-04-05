@@ -2,9 +2,12 @@
 using FreelanceAppAPI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FreelanceAppAPI.Controllers
 {
+    
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserAccountController : Controller
@@ -14,12 +17,10 @@ namespace FreelanceAppAPI.Controllers
         private readonly IConfiguration _configuration;
         private readonly ApplicationDbContext _context;
 
-        public UserAccountController(
-                UserManager<ApplicationUser> userManager,
+        public UserAccountController(UserManager<ApplicationUser> userManager,
                 SignInManager<ApplicationUser> signInManager,
                 IConfiguration configuration,
-                ApplicationDbContext context
-                )
+                ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -28,7 +29,7 @@ namespace FreelanceAppAPI.Controllers
         }
 
         #region Post Methods
-        [HttpPost("CreateUser")]
+        [HttpPost]
         public async Task<IActionResult> PostCreateUser([FromBody] UserAccountModel userModel)
         {
             var user = new ApplicationUser()
@@ -52,18 +53,13 @@ namespace FreelanceAppAPI.Controllers
 
         #region Get Methods
 
-        [HttpGet("UserList")]
-        public async Task<ActionResult> GetUserList() {
-
-            //var userList = _context.Users.ToList();
-            var userList = _context.Users.ToList();
-    
-        return Ok(userList);
+        [HttpGet]
+        public async Task<IActionResult> GetUserList() 
+        {
+            return Ok(await _context.Users.ToListAsync());
         }
 
-
         #endregion
-
 
     }
 }

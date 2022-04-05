@@ -6,7 +6,7 @@ namespace FreelanceAppAPI.Entities
     public class DocumentDetail
     {
         [Key]
-        public int RowId { get; set; }
+        public Guid RowId { get; set; }
         [Required]
         public DateTime WorkedDate  { get; set; }
         [Required]

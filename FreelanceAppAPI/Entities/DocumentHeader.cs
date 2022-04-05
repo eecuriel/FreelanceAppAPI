@@ -4,9 +4,10 @@ namespace FreelanceAppAPI.Entities
 {
     public class DocumentHeader
     {
+    
         [Key]
-        public int DocId { get; set; }
-        public string UserId { get; set; }
+        public Guid DocId { get; set; }
+        public Guid UserId { get; set; }
         public int  CutomerId { get; set; }
         [Required(ErrorMessage="Debe colocar el nombre del proyecto")]
         public string ProjectName { get; set; }

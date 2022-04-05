@@ -6,7 +6,7 @@ namespace FreelanceAppAPI.Entities
     public class Customer
     {
         [Key]
-        public int  CutomerId { get; set; }
+        public Guid  CutomerId { get; set; }
         [Required(ErrorMessage = "Debe colocar el nombre del cliente")]
         public string CutomerName { get; set; }
         public string CustomerPhone { get; set; }

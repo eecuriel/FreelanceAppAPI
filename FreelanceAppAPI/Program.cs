@@ -27,7 +27,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
 builder.Services.AddCors(options => {
 
     options.AddPolicy("CorsPolicy", 
-    builder => builder.WithOrigins("*")
+    builder => builder.AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader()
     );

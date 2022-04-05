@@ -15,7 +15,8 @@ namespace FreelanceAppAPI.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            //optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionSQLServer"));
+            optionsBuilder.UseSqlite(Configuration.GetConnectionString("DefaultConnectionSQlite"));
         }
 
         public DbSet<Customer> Customes {get; set;}
