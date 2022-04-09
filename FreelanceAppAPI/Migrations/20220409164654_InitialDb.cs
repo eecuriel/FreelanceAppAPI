@@ -70,6 +70,7 @@ namespace FreelanceAppAPI.Migrations
                 columns: table => new
                 {
                     RowId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    DocId = table.Column<Guid>(type: "TEXT", nullable: false),
                     WorkedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     TimeIn = table.Column<int>(type: "INTEGER", nullable: false),
                     TimeOut = table.Column<int>(type: "INTEGER", nullable: false),
@@ -89,7 +90,7 @@ namespace FreelanceAppAPI.Migrations
                 {
                     DocId = table.Column<Guid>(type: "TEXT", nullable: false),
                     UserId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CutomerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CutomerId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ProjectName = table.Column<string>(type: "TEXT", nullable: false),
                     PeriodStart = table.Column<DateTime>(type: "TEXT", nullable: false),
                     PeriodEnd = table.Column<DateTime>(type: "TEXT", nullable: false),

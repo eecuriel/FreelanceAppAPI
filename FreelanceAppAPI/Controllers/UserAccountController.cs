@@ -27,7 +27,7 @@ namespace FreelanceAppAPI.Controllers
             _context = context;
         }
 
-        #region Post Methods
+    #region Post Methods
         [HttpPost]
         public async Task<IActionResult> PostCreateUser([FromBody] UserAccountModel userModel)
         {
@@ -54,7 +54,7 @@ namespace FreelanceAppAPI.Controllers
 
             var user = await _userManager.FindByEmailAsync(userLogin.Email);
             var result = await _signInManager.PasswordSignInAsync(user,userLogin.Password,isPersistent: false,lockoutOnFailure: false );
-
+            
             if(result.Succeeded) {
                 return Ok($"El usuario {userLogin.UserName} ha sido verificado.");
             }else {
@@ -63,7 +63,7 @@ namespace FreelanceAppAPI.Controllers
         }
         #endregion
 
-        #region Get Methods
+    #region Get Methods
 
         [HttpGet]
         public async Task<IActionResult> GetUserList() 

@@ -8,7 +8,8 @@ namespace FreelanceAppAPI.Entities
         [Key]
         public Guid DocId { get; set; }
         public Guid UserId { get; set; }
-        public int  CutomerId { get; set; }
+        public Guid  CutomerId { get; set; }
+
         [Required(ErrorMessage="Debe colocar el nombre del proyecto")]
         public string ProjectName { get; set; }
         [Required]
@@ -20,6 +21,7 @@ namespace FreelanceAppAPI.Entities
         public int TotalHoursWorked { get; set; }
         public int RegularHours { get; set; }
         public int OvertimeHours { get; set; }
-    
+        public int DocState { get; set; } // 1 = Registrado, 2= Completado, 3 = Facturado
+        
     }
 }

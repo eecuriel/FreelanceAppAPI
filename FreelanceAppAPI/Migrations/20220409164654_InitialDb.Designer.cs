@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FreelanceAppAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220402220823_InitialDb")]
+    [Migration("20220409164654_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,9 @@ namespace FreelanceAppAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid>("DocId")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("OffTimeEnd")
                         .HasColumnType("INTEGER");
 
@@ -87,8 +90,8 @@ namespace FreelanceAppAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CutomerId")
-                        .HasColumnType("INTEGER");
+                    b.Property<Guid>("CutomerId")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("OvertimeHours")
                         .HasColumnType("INTEGER");
