@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\FreelanceAppAPI.csproj": {}
+    "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\FreelanceAppAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\FreelanceAppAPI.csproj": {
+    "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\FreelanceAppAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\FreelanceAppAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\FreelanceAppAPI.csproj",
         "projectName": "FreelanceAppAPI",
-        "projectPath": "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\FreelanceAppAPI.csproj",
+        "projectPath": "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\FreelanceAppAPI.csproj",
         "packagesPath": "C:\\Users\\Eduardo Curiel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eduardo Curiel\\source\\repos\\freelanceappapi\\freelanceappapi\\obj\\",
+        "outputPath": "C:\\Users\\Eduardo Curiel\\source\\repos\\FreelanceAppAPI\\FreelanceAppAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
