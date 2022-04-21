@@ -7,16 +7,10 @@ namespace FreelanceAppAPI.Context
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public IConfiguration Configuration { get;  }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IConfiguration configuration) : base(options)
+    
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            Configuration = configuration;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionSQLServer"));
-            optionsBuilder.UseSqlite(Configuration.GetConnectionString("DefaultConnectionSQlite"));
+        
         }
 
         public DbSet<Customer> Customes {get; set;}

@@ -1,7 +1,13 @@
+using System.Text;
 using System.Collections.Immutable;
 using FreelanceAppAPI.Context;
 using FreelanceAppAPI.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using FreelanceAppAPI.Services;
+using FreelanceAppAPI.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +17,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ApplicationDbContext>();
+
+var configuration = builder.Configuration;
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(configuration.GetConnectionString("DefaultConnectionSQlite")));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
 {
@@ -24,6 +33,23 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
 }
 ).AddEntityFrameworkStores<ApplicationDbContext>(); 
 
+// Token Service
+builder.Services.AddScoped<ITokenBuilder,TokenBuilder>();
+
+// JWT service implementation
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer( options =>
+    options.TokenValidationParameters = new TokenValidationParameters {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["APIKey:connectionKey"])),
+        ClockSkew = TimeSpan.Zero
+    }
+);
+
+// Cors policy
 builder.Services.AddCors(options => {
 
     options.AddPolicy("CorsPolicy", 
@@ -35,8 +61,13 @@ builder.Services.AddCors(options => {
 });
 
 
-
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+SeedData.SeedDataInit(roleManager);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -46,6 +77,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

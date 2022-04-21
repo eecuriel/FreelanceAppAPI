@@ -1,5 +1,7 @@
 using FreelanceAppAPI.Context;
 using FreelanceAppAPI.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,12 +24,14 @@ namespace FreelanceAppAPI.Controllers
 
     #region Get Methods
     [HttpGet]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
     public async Task<ActionResult<Customer>> GetCustomerList(){
 
         return Ok(await _context.Customes.ToListAsync());
     }
 
     [HttpGet("{id}")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
     public async Task<ActionResult<Customer>> GetCustomerById(Guid id){
 
         var customer = await _context.Customes.FindAsync(id);
@@ -42,6 +46,7 @@ namespace FreelanceAppAPI.Controllers
 
     #region Post method
     [HttpPost]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
     public async Task<ActionResult> PostCustomer([FromBody] Customer customerData){
 
         var customer = new Customer() {
@@ -64,6 +69,7 @@ namespace FreelanceAppAPI.Controllers
 
     #region Put methods
     [HttpPut("{id}")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
     public async Task<ActionResult> UpdateCustomer(Customer customerData, Guid id)
     {
         var customer = await _context.Customes.FindAsync(id);
@@ -88,6 +94,7 @@ namespace FreelanceAppAPI.Controllers
 
     #region Delete methods
     [HttpDelete("{id}")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
     public async Task<ActionResult> DeleteCustomer(Guid id) 
     {
         var customer = await _context.Customes.FindAsync(id);

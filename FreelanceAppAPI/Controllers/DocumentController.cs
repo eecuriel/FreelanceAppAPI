@@ -1,7 +1,10 @@
+using System.Net;
 using System.Reflection.Metadata;
 using FreelanceAppAPI.Context;
 using FreelanceAppAPI.Entities;
 using FreelanceAppAPI.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,12 +22,14 @@ namespace FreelanceAppAPI.Controllers
 
         #region Get Methods
         [HttpGet("DocumentList")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
         public async Task<ActionResult<DocumentHeader>> GetDocHeader(){
 
             return Ok(await _context.DocumentHeaders.ToListAsync());
         } 
 
         [HttpGet("DocumentList/{docId}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
         public async Task<ActionResult<DocumentModel>> GetDocumentById (Guid docId) 
         {
             var document = new DocumentModel();
@@ -45,6 +50,7 @@ namespace FreelanceAppAPI.Controllers
 
         #region Post Methods
         [HttpPost("CreateDocHeader")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
         public async Task<ActionResult<DocumentHeader>> CreateDocumentHeader([FromBody] DocumentHeader  docHeaderData) 
         {
 
@@ -76,6 +82,7 @@ namespace FreelanceAppAPI.Controllers
         }
 
         [HttpPost("CreateDocDetail/{docId}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
         public async Task<ActionResult<DocumentDetail>>  CreateDocDetail([FromBody] DocumentDetail docDetailData, Guid docId)
         {
             var docHeader = await _context.DocumentHeaders.FindAsync(docId);
@@ -101,13 +108,13 @@ namespace FreelanceAppAPI.Controllers
                 return BadRequest();
             }
             
-            
         }
 
         #endregion
 
         #region Delete Methods
         [HttpDelete("{docId}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles= "User")]
         public async Task<ActionResult> DeleteDocument(Guid docId)
         {
             var docHeader = await _context.DocumentHeaders.FindAsync(docId);
@@ -132,7 +139,7 @@ namespace FreelanceAppAPI.Controllers
 
         #endregion
 
-        #region  Put Methods
+        #region Put Methods
         
 
         #endregion
